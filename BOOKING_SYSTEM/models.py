@@ -14,6 +14,7 @@ class Customer(models.Model):
 
 class Booking(models.Model):
     user = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    booking_location = models.CharField()
     booking_date = models.DateField()
     booking_time = models.TimeField()
     booking_length = models.CharField
@@ -33,6 +34,7 @@ class Booking(models.Model):
     
 class Payment(models,Model):
     booking = models.OneToOneField(Booking, on_delete=models.CASCADE)
+    transaction_id = models.CharField(max_length=100, unique=True)
     quote = models.DecimalField(max_digits=10, decimal_places=2)
     status = models.CharField(
         max_length=20,
@@ -43,7 +45,6 @@ class Payment(models,Model):
         ],
         default='pending'
     )
-    transaction_id = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
         return f"Payment for Booking {self.booking.id} - {self.status}"
