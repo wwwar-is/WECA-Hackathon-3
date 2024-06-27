@@ -7,6 +7,9 @@ from .models import Customer, Booking, Payment, Review
 from .forms import BookingForm
 # Create your views here.
 
+def index_view(request):
+    return render(request, 'index.html')
+
 def register_view(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
