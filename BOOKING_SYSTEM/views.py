@@ -60,6 +60,9 @@ def booking_view(request):
         form = BookingForm()
     return render(request, 'booking.html', {'form': form})
 
+    def calculate_total_cost(booking_length):
+        return booking_length * 50
+
 @login_required
 def booking_confirmation_view(request, booking_id):
     booking = Booking.objects.get(id=booking_id)
