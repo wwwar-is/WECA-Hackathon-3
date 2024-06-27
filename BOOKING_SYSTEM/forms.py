@@ -8,4 +8,5 @@ class BookingForm(forms.ModelForm):
         widgets = {
             'booking_date': forms.DateInput(attrs={'type': 'date'}),
             'booking_time': forms.TimeInput(attrs={'type': 'time'}),
+            'booking_length': forms.TextInput(attrs={'placeholder': 'e.g., 1 hour'}),
         }
