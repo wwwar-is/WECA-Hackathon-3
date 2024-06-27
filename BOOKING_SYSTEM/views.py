@@ -4,4 +4,4 @@ from .models import Customer, Booking, Payment, Review
 # Create your views here.
 
 def booking (request):
-    return HttpResponse("hello world!")
+    return render(request, "booking.html")
