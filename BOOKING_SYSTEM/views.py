@@ -18,7 +18,7 @@ def register_view(request):
             return redirect('home')  # replace with your home URL or desired redirect URL
     else:
         form = UserCreationForm()
-    return render(request, 'BOOKING_SYSTEM/templates/register.html', {'form': form})
+    return render(request, 'register.html', {'form': form})
 
 @login_required
 def booking_view(request):
