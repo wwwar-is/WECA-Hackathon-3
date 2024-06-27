@@ -22,6 +22,20 @@ def register_view(request):
         form = UserCreationForm()
     return render(request, 'register.html', {'form': form})
 
+def login_view(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('index')
+    else:
+        form = AuthenticationForm()
+    return render(request, 'login.html', {'form': form})
+
 @login_required
 def booking_view(request):
     if request.method == 'POST':
@@ -47,17 +61,3 @@ def booking_view(request):
 def booking_confirmation_view(request, booking_id):
     booking = Booking.objects.get(id=booking_id)
     return render(request, 'booking_confirmation.html', {'booking': booking})
-
-def login_view(request):
-    if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('index')
-    else:
-        form = AuthenticationForm()
-    return render(request, 'login.html', {'form': form})
