@@ -56,4 +56,20 @@ class Review(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Review by {self.customer.username} for Booking {self.booking.id}"        
+        return f"Review by {self.customer.username} for Booking {self.booking.id}"   
+
+
+ # BOOKING MODELS TEST            
+
+class Booking(models.Model):
+    name = models.CharField(max_length=100)
+    contact = models.CharField(max_length=15)
+    email = models.EmailField()
+    event_type = models.CharField(max_length=100)
+    guests = models.PositiveIntegerField()
+    address = models.CharField(max_length=255)
+    date = models.DateField()
+
+    def __str__(self):
+        return f"{self.name} - {self.event_type} on {self.date}"
+        

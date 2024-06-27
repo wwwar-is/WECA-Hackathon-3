@@ -3,56 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking Form</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f2f2f2;
-            font-family: Arial, sans-serif;
-        }
-        .booking-form {
-            background: white;
-            padding: 20px;
-            padding-right: 50px;
-            padding-left: 35px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-        }
-        .booking-form h2 {
-            margin-bottom: 20px;
-            font-size: 24px;
-            text-align: center;
-        }
-        .booking-form .form-group {
-            margin-bottom: 15px;
-        }
-        .booking-form label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        .booking-form input, .booking-form select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .booking-form button {
-            width: 100%;
-            padding: 10px;
-            background: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .booking-form button:hover {
-            background: #45a049;
-        }
-    </style>
+    <title> {% block title %}
+        Booking
+      {% endblock %}</title>
+      <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
 
@@ -77,8 +31,8 @@
             <input type="text" id="event_type" name="event_type" required>
         </div>
         <div class="form-group">
-            <label for="guests">Number of Guests</label>
-            <input type="number" id="guests" name="guests" required>
+            <label for="event_type">Number of guests</label>
+            <input type="text" id="number_guests" name="number_guests" required>
         </div>
         <div class="form-group">
             <label for="address">Address of Location</label>
@@ -86,8 +40,23 @@
         </div>
         <div class="form-group">
             <label for="date">Pick a Date</label>
-            <input type="date" id="date" name="date" required>
-        </div>
+            <select id="date" name="date" required>
+                <option value="2024-07-06">July 06, 2024</option>
+                <option value="2024-07-13">July 13, 2024</option>
+                <option value="2024-07-20">July 20, 2024</option>
+                <option value="2024-07-27">July 27, 2024</option>
+                <option value="2024-08-03">August 03, 2024</option>
+                <option value="2024-08-10">August 10, 2024</option>
+                <option value="2024-08-17">August 17, 2024</option>
+                <option value="2024-08-24">August 24, 2024</option>
+                <option value="2024-08-31">August 31, 2024</option>
+                <option value="2024-09-07">September 07, 2024</option>
+                <option value="2024-09-14">September 14, 2024</option>
+                <option value="2024-09-21">September 21, 2024</option>
+                <option value="2024-09-28">September 28, 2024</option>
+
+                {% csrf_token %}
+                {{ form.as_p }}
         <button type="submit">Book</button>
     </form>
 </div>

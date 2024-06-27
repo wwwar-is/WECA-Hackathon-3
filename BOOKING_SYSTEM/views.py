@@ -31,3 +31,23 @@ def booking_confirmation_view(request, booking_id):
     booking = Booking.objects.get(id=booking_id)
     return render(request, 'booking_confirmation.html', {'booking': booking})
 
+def booking(request):
+    if request.method == 'POST':
+        # Process form data here
+        return HttpResponse('Thank you for your booking!')
+    return render(request, 'booking.html')
+
+    from django.shortcuts import render, redirect
+from .forms import BookingForm
+
+# Booking test --------------------------------------------------------------------------------
+
+def booking(request):
+    if request.method == 'POST':
+        form = BookingForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponse('Thank you for your booking!')
+    else:
+        form = BookingForm()
+    return render(request, 'booking.html', {'form': form})
