@@ -5,19 +5,18 @@ from django.contrib.auth.models import User
 
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    email = models.EmailField(max_length=254, unique=True)
-    phone_number = models.CharField(max_length=15, blank=True)
-    address = models.TextField(blank=True)
+    email = models.EmailField(max_length=254, unique=True, blank=False)
+    phone_number = models.CharField(max_length=15, blank=False)
 
     def __str__(self):
         return self.user.username
 
 class Booking(models.Model):
     user = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    booking_location = models.CharField()
+    booking_location = models.CharField(max_length=255)
     booking_date = models.DateField()
     booking_time = models.TimeField()
-    booking_length = models.CharField
+    booking_length = models.CharField(max_length=50)
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.CharField(
         max_length=20,
