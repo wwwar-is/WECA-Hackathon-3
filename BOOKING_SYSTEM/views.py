@@ -25,3 +25,8 @@ def booking_view(request):
     else:
         form = BookingForm()
     return render(request, 'booking.html', {'form': form})
+
+@login_required
+def booking_confirmation_view(request, booking_id):
+    booking = Booking.objects.get(id=booking_id)
+    return render(request, 'booking_confirmation.html', {'booking': booking})
