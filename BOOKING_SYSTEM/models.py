@@ -32,7 +32,7 @@ class Booking(models.Model):
     def __str__(self):
         return f"{self.user.username} - on {self.booking_date} at {self.booking_time} for {self.booking_length}"
     
-class Payment(models,Model):
+class Payment(models.Model):
     booking = models.OneToOneField(Booking, on_delete=models.CASCADE)
     transaction_id = models.CharField(max_length=100, unique=True)
     quote = models.DecimalField(max_digits=10, decimal_places=2)

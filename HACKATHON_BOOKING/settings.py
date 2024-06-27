@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['8000-wwwaris-wecahackathon3-7sk2y9om1pb.ws.codeinstitute-ide.net', '.herokuapp.com']
+ALLOWED_HOSTS = ['8000-wwwaris-wecahackathon3-7sk2y9om1pb.ws.codeinstitute-ide.net', '.herokuapp.com', '8000-wwwaris-wecahackathon3-3cx74td6uqy.ws-eu114.gitpod.io']
 
 
 # Application definition
