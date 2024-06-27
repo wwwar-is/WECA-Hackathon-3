@@ -34,6 +34,12 @@ DEBUG = True
 ALLOWED_HOSTS = ['8000-wwwaris-wecahackathon3-7sk2y9om1pb.ws.codeinstitute-ide.net', '.herokuapp.com', '8000-wwwaris-wecahackathon3-3cx74td6uqy.ws-eu114.gitpod.io', '8000-wwwaris-wecahackathon3-j654eb5t3qi.ws.codeinstitute-ide.net', '8000-wwwaris-wecahackathon3-gaqyy3xq2k0.ws.codeinstitute-ide.net']
 
 
+# csrf authentication
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-wwwaris-wecahackathon3-j654eb5t3qi.ws.codeinstitute-ide.net', 'https://8000-wwwaris-wecahackathon3-3cx74td6uqy.ws-eu114.gitpod.io', 'https://8000-wwwaris-wecahackathon3-7sk2y9om1pb.ws.codeinstitute-ide.net', '8000-wwwaris-wecahackathon3-gaqyy3xq2k0.ws.codeinstitute-ide.net' 
+]
+
 # Application definition
 
 INSTALLED_APPS = [
