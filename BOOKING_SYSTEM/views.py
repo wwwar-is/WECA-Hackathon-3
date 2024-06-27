@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Customer, Booking, Payment, Review
@@ -30,3 +30,4 @@ def booking_view(request):
 def booking_confirmation_view(request, booking_id):
     booking = Booking.objects.get(id=booking_id)
     return render(request, 'booking_confirmation.html', {'booking': booking})
+
