@@ -21,6 +21,7 @@ from BOOKING_SYSTEM import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('booking/', views.booking_view, name='booking'),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('booking/confirmation/<int:booking_id>/', views.booking_confirmation_view, name='booking_confirmation'),
     path("", include("BOOKING_SYSTEM.urls"))
 ]
