@@ -1,27 +1,100 @@
+/* background color */
+body {
+    background-color: #eefcee;
+}
+
+/* navbar */
+.navbar {
+    background-color: #aaabbc;
+}
+.navbar-brand img {
+        height: 40px;
+        width: auto;
+        border-radius: 50%;
+}
+
+.navbar a:hover {
+    color: #ffd6d6;
+}
+
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+    color: #ffd6d6;
+}
+
+/* high res logo */
+.high-resolution-logo {
+    max-width: 300px;
+}
+
+
+/* 'about info' on left of home */
+.about {
+    text-align: center;
+}
+
+/* text before 'book here button' but after carousel */
+
+.book {
+    text-align: center;
+}
+
+/* footer */
+
 .footer {
-    background-color: #f8f9fa;
+    background-color: #8B8982;
     padding: 20px 0;
+    text-align: center;
+    padding-bottom: 0px;
+    padding-top: 5px;
+    height: 100%;
+    margin: 0;
 }
-.footer h5 {
-    margin-bottom: 20px;
-}
+
 .footer ul {
     list-style-type: none;
-    padding-left: 0;
+    
 }
 .footer ul li {
-    margin-bottom: 10px;
+    margin-bottom: 0;
+    margin-right: 20px;
 }
-.footer ul li a {
-    text-decoration: none;
-    color: #333;
-}
+
 .footer ul li a:hover {
-    color: #007bff;
+    color: #ffd6d6;
 }
-.footer .follow {
-    margin-left: 10px;
+
+#connect-with-us a {
+    align-self: auto;
+    color: #373f47;
+    border-color: #ffd6d6;
+    margin-right: 20px;
+    margin-top: 5px;
 }
-.footer img {
-    vertical-align: middle;
+
+#connect-with-us a:hover {
+    color: #ffd6d6;
+}
+
+/* Carousel */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+            background-color: #000;
+            border-radius: 50%;
+        }
+
+.carousel-item img {
+    border-radius: 30%;
+}
+
+
+/* book now button */
+.btn {
+    background-color: #ffd6d6;
+    color: #373f47;
+    border-color: #373f47;
+}
+
+.btn:hover {
+    color: #ffd6d6;
+    background-color: #373f47;
 }
