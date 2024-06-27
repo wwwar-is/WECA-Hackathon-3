@@ -36,6 +36,7 @@ ALLOWED_HOSTS = ['8000-wwwaris-wecahackathon3-7sk2y9om1pb.ws.codeinstitute-ide.n
 
 # Application definition
 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
