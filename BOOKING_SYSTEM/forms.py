@@ -1,6 +1,7 @@
 from django import forms
 from .models import Booking
 from .models import Customer
+from .models import Booking, AvailableDate
 
 class BookingForm(forms.ModelForm):
     name = forms.CharField(max_length=100)

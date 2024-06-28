@@ -3,11 +3,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
-from .models import Customer, Booking, Payment, Review
+from .models import Customer, Booking, Payment, Review, AvailableDate
 from .forms import BookingForm
-from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import AuthenticationForm
-# Create your views here.
 
 def index_view(request):
     return render(request, 'index.html')
@@ -20,7 +18,7 @@ def register_view(request):
             username = form.cleaned_data.get('username')
             messages.success(request, f'Account created for {username}!')
             login(request, user)
-            return redirect('home')  # replace with your home URL or desired redirect URL
+            return redirect('index')  # replace with your home URL or desired redirect URL
     else:
         form = UserCreationForm()
     return render(request, 'register.html', {'form': form})
@@ -85,3 +83,20 @@ def booking_view(request):
 def booking_confirmation_view(request, booking_id):
     booking = Booking.objects.get(id=booking_id)
     return render(request, 'booking_confirmation.html', {'booking': booking})
+
+def add_dates_view(request):
+    from django import forms
+    class AddMultipleDatesForm(forms.Form):
+        dates = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+
+    if request.method == 'POST':
+        form = AddMultipleDatesForm(request.POST)
+        if form.is_valid():
+            dates = form.cleaned_data['dates']
+            for date in dates:
+                AvailableDate.objects.create(date=date)
+            messages.success(request, "Dates have been added.")
+            return redirect('admin:app_availabledate_changelist')
+    else:
+        form = AddMultipleDatesForm()
+    return render(request, 'admin/add_dates.html', {'form': form})

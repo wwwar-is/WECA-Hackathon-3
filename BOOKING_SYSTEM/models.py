@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib import admin
 
 # Create your models here.
 
@@ -51,4 +52,10 @@ class Review(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Review by {self.customer.username} for Booking {self.booking.id}"        
+        return f"Review by {self.customer.username} for Booking {self.booking.id}" 
+
+class AvailableDate(models.Model):
+    date = models.DateField(unique=True)
+
+    def __str__(self):
+        return self.date.strftime('%Y-%m-%d')       
