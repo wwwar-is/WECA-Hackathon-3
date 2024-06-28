@@ -46,7 +46,7 @@ def booking_view(request):
     if request.method == 'POST':
         form = BookingForm(request.POST)
         if form.is_valid():
-            booking_date = form.cleaned_data['date']
+            booking_date = form.cleaned_data['booking_date']
             booking_time = form.cleaned_data['booking_time']
             booking_length = form.cleaned_data['booking_length']
             name = form.cleaned_data['name']
@@ -61,7 +61,7 @@ def booking_view(request):
                 messages.error(request, 'This time slot is already booked. Please choose another time.')
             else:
                 booking = form.save(commit=False)
-                booking.customer = customer  # Assign the customer to the booking
+                booking.customer = Customer  # Assign the customer to the booking
                 booking.name = name
                 booking.contact = contact
                 booking.email = email
