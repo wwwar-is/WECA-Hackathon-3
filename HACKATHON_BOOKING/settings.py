@@ -91,7 +91,7 @@ WSGI_APPLICATION = 'HACKATHON_BOOKING.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 
-DATABASE_URL = os.environ.get("DATABASE_URL", "postgres://uoakmrqkale:3fP8XohR6uoO@ep-gentle-mountain-a23bxz6h.eu-central-1.aws.neon.tech/mower_grab_large_118223")
+DATABASE_URL = os.environ.get("DATABASE_URL", "postgres://uoakmrqkale:3fP8XohR6uoO@ep-gentle-mountain-a23bxz6h.eu-central-1.aws.neon.tech/etch_dry_prism_694454")
 
 DATABASES = {
     'default': dj_database_url.parse(DATABASE_URL, conn_max_age=600)
