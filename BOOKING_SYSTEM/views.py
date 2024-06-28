@@ -40,10 +40,10 @@ def login_view(request):
     return render(request, 'login.html', {'form': form})
 
 def booking_view(request):
-    try:
-        customer = request.user.customer
-    except Customer.DoesNotExist:
-        return redirect('profile')  # Redirect to profile completion if customer does not exist
+    # try:
+    #     customer = request.user.customer
+    # except Customer.DoesNotExist:
+    #     return redirect('profile')  # Redirect to profile completion if customer does not exist
 
     if request.method == 'POST':
         form = BookingForm(request.POST)
