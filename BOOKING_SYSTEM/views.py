@@ -39,27 +39,44 @@ def login_view(request):
         form = AuthenticationForm()
     return render(request, 'login.html', {'form': form})
 
-@login_required
 def booking_view(request):
+    try:
+        customer = request.user.customer
+    except Customer.DoesNotExist:
+        return redirect('profile')  # Redirect to profile completion if customer does not exist
+
     if request.method == 'POST':
         form = BookingForm(request.POST)
         if form.is_valid():
-            booking_date = form.cleaned_data['booking_date']
+            booking_date = form.cleaned_data['date']
             booking_time = form.cleaned_data['booking_time']
             booking_length = form.cleaned_data['booking_length']
+            name = form.cleaned_data['name']
+            contact = form.cleaned_data['contact']
+            email = form.cleaned_data['email']
+            event_type = form.cleaned_data['event_type']
+            number_guests = form.cleaned_data['number_guests']
+            address = form.cleaned_data['address']
+            
             # Check if the time slot is available
             if Booking.objects.filter(booking_date=booking_date, booking_time=booking_time).exists():
                 messages.error(request, 'This time slot is already booked. Please choose another time.')
             else:
                 booking = form.save(commit=False)
-                booking.user = request.user.customer  # assuming user is related to customer
+                booking.customer = customer  # Assign the customer to the booking
+                booking.name = name
+                booking.contact = contact
+                booking.email = email
+                booking.event_type = event_type
+                booking.number_guests = number_guests
+                booking.address = address
                 booking.save()
                 messages.success(request, 'Your booking has been made successfully!')
                 return redirect('booking_confirmation', booking_id=booking.id)
     else:
         form = BookingForm()
-    return render(request, 'booking.html', {'form': form})
 
+    return render(request, 'booking.html', {'form': form})
     def calculate_total_cost(booking_length):
         return booking_length * 50
 

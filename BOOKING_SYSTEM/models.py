@@ -12,24 +12,19 @@ class Customer(models.Model):
         return self.user.username
 
 class Booking(models.Model):
-    user = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    booking_location = models.CharField(max_length=255)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     booking_date = models.DateField()
     booking_time = models.TimeField()
-    booking_length = models.CharField(max_length=50)
-    created_at = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(
-        max_length=20,
-        choices=[
-            ('pending', 'Pending'),
-            ('confirmed', 'Confirmed'),
-            ('cancelled', 'Cancelled')
-        ],
-        default='pending'
-    )
+    booking_length = models.PositiveIntegerField()
+    name = models.CharField(max_length=100)
+    contact = models.CharField(max_length=100)
+    email = models.EmailField()
+    event_type = models.CharField(max_length=100)
+    number_guests = models.PositiveIntegerField()
+    address = models.CharField(max_length=255)
 
     def __str__(self):
-        return f"{self.user.username} - on {self.booking_date} at {self.booking_time} for {self.booking_length}"
+        return f"Booking for {self.name} on {self.booking_date} at {self.booking_time}"
     
 class Payment(models.Model):
     booking = models.OneToOneField(Booking, on_delete=models.CASCADE)
