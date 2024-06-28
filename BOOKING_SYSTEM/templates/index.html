@@ -17,8 +17,8 @@
     <!--Navbar -->
     <nav class="navbar sticky-top navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand d-none d-md-block" href="#">Cari McBimbi</a>
-            <a class="navbar-brand d-md-none" href="#"><img src="{% static 'css/media/images/-high-resolution-logo-transparent.png' %}"
+            <a class="navbar-brand d-none d-md-block" href="{% url 'admin:index' %}">Cari McBimbi</a>
+            <a class="navbar-brand d-md-none" href="{% url 'index' %}"><img src="{% static 'css/media/images/-high-resolution-logo-transparent.png' %}"
                     alt="Icon"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
