@@ -67,3 +67,31 @@ def booking_view(request):
 def booking_confirmation_view(request, booking_id):
     booking = Booking.objects.get(id=booking_id)
     return render(request, 'booking_confirmation.html', {'booking': booking})
+
+@admin.register(AvailableDate)
+class AvailableDateAdmin(admin.ModelAdmin):
+    list_display = ('date',)
+    
+    def get_urls(self):
+        urls = super().get_urls()
+        custom_urls = [
+            path('add-dates/', self.admin_site.admin_view(self.add_dates_view), name='add-dates'),
+        ]
+        return custom_urls + urls
+
+    def add_dates_view(self, request):
+        if request.method == 'POST':
+            form = AddMultipleDatesForm(request.POST)
+            if form.is_valid():
+                dates = form.cleaned_data['dates']
+                for date in dates:
+                    AvailableDate.objects.create(date=date)
+                self.message_user(request, "Dates have been added.")
+                return redirect('admin:app_availabledate_changelist')
+        else:
+            form = AddMultipleDatesForm()
+        context = dict(
+            self.admin_site.each_context(request),
+            form=form,
+        )
+        return render(request, 'admin/add_dates.html', context)
