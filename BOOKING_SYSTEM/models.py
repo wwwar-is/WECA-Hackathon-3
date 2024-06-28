@@ -16,14 +16,21 @@ class Booking(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     booking_date = models.DateField()
     booking_time = models.TimeField()
-    booking_length = models.PositiveIntegerField()
-    name = models.CharField(max_length=100)
-    contact = models.CharField(max_length=100)
-    email = models.EmailField()
-    event_type = models.CharField(max_length=100)
-    number_guests = models.PositiveIntegerField()
+    booking_length = models.PositiveIntegerField(default=0)
+    name = models.CharField(max_length=100, default=0)
+    contact = models.IntegerField(default=0)
+    email = models.EmailField(default=0)
+    event_type = models.CharField(max_length=100, default=0)
+    number_guests = models.PositiveIntegerField(default=0)
     address = models.CharField(max_length=255)
-
+    status = models.CharField(
+        max_length=20,
+        choices=[
+            ('pending', 'Pending'),
+            ('completed', 'Completed'),
+            ('failed', 'Failed')
+        ],
+    )
 
     def __str__(self):
         return f"Booking for {self.name} on {self.booking_date} at {self.booking_time}"
