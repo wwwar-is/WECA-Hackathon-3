@@ -7,4 +7,5 @@ urlpatterns = [
     path('login/', views.login_view, name="login"),
     path('booking/', views.booking_view, name="booking"),
     path('booking/confirmation/<int:booking_id>/', views.booking_confirmation_view, name='booking_confirmation'),
+    path('admin/', admin.site.urls),
 ]

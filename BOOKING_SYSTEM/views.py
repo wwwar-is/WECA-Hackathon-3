@@ -60,6 +60,9 @@ def booking_view(request):
         form = BookingForm()
     return render(request, 'booking.html', {'form': form})
 
+    def calculate_total_cost(booking_length):
+        return booking_length * 50
+
 @login_required
 def booking_confirmation_view(request, booking_id):
     booking = Booking.objects.get(id=booking_id)
@@ -85,3 +88,30 @@ def booking(request):
     else:
         form = BookingForm()
     return render(request, 'booking.html', {'form': form})
+@admin.register(AvailableDate)
+class AvailableDateAdmin(admin.ModelAdmin):
+    list_display = ('date',)
+    
+    def get_urls(self):
+        urls = super().get_urls()
+        custom_urls = [
+            path('add-dates/', self.admin_site.admin_view(self.add_dates_view), name='add-dates'),
+        ]
+        return custom_urls + urls
+
+    def add_dates_view(self, request):
+        if request.method == 'POST':
+            form = AddMultipleDatesForm(request.POST)
+            if form.is_valid():
+                dates = form.cleaned_data['dates']
+                for date in dates:
+                    AvailableDate.objects.create(date=date)
+                self.message_user(request, "Dates have been added.")
+                return redirect('admin:app_availabledate_changelist')
+        else:
+            form = AddMultipleDatesForm()
+        context = dict(
+            self.admin_site.each_context(request),
+            form=form,
+        )
+        return render(request, 'admin/add_dates.html', context)

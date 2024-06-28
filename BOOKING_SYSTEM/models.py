@@ -73,3 +73,10 @@ class Booking(models.Model):
     def __str__(self):
         return f"{self.name} - {self.event_type} on {self.date}"
         
+        return f"Review by {self.customer.username} for Booking {self.booking.id}" 
+
+class AvailableDate(models.Model):
+    date = models.DateField(unique=True)
+
+    def __str__(self):
+        return self.date.strftime('%Y-%m-%d')       
