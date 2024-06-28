@@ -27,7 +27,7 @@
                         <a class="nav-link" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Booking</a>
+                        <a class="nav-link" href="{% url 'booking' %}" href="#">Booking</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Login</a>
@@ -66,7 +66,7 @@
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
         </form>
-        <p>Don't have an account? <a href="{% url 'signup' %}">Sign up here</a>.</p>
+        <p>Don't have an account? <a href="{% url 'register' %}">Sign up here</a>.</p>
     </div>
     
 
