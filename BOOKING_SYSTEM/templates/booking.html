@@ -55,10 +55,11 @@
                 <option value="2024-09-21">September 21, 2024</option>
                 <option value="2024-09-28">September 28, 2024</option>
 
-                {% csrf_token %}
+        
+        {% csrf_token %}
                 {{ form.as_p }}
-        <button type="submit">Book</button>
     </form>
+    <button type="submit">Book</button>
 </div>
 
 </body>
