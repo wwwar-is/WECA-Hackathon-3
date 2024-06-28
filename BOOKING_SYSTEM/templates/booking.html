@@ -15,8 +15,8 @@
         Booking
     {% endblock %}
   </form>  
-    <!-- 
-<div class="booking-form">
+    
+<!-- <div class="booking-form">
     <h2>Book Your Event</h2>
     <form method="post" action="">
        
@@ -63,7 +63,7 @@
 
                 {% csrf_token %}
                 {{ form.as_p }}
-        <button type="submit">Book</button>
+        <button type="submit" method="post" action="{% url 'booking_confirmation' %}">Book</button>
     </form>
 </div>
 
