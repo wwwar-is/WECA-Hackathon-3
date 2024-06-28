@@ -14,7 +14,7 @@ class Customer(models.Model):
 class Booking(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     booking_date = models.DateField()
-    booking_time = models.CharField()
+    booking_time = models.TimeField()
     booking_length = models.PositiveIntegerField()
     name = models.CharField(max_length=100)
     contact = models.CharField(max_length=100)

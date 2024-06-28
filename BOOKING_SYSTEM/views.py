@@ -76,8 +76,9 @@ def booking_view(request):
     else:
         form = BookingForm()
 
-    return HttpResponse (f'Booking for {booking_time} and {time} is complete you should recieve an email confirmation soon')
-    # render(request, 'booking.html', {'form': form})
+    return 
+    render(request, 'booking.html', {'form': form})
+    # HttpResponse (f'Booking for {'booking_time'} and {'date'} is complete you should recieve an email confirmation soon')
  
 
 @login_required
