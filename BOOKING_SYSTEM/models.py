@@ -24,6 +24,7 @@ class Booking(models.Model):
     number_guests = models.PositiveIntegerField()
     address = models.CharField(max_length=255)
 
+
     def __str__(self):
         return f"Booking for {self.name} on {self.booking_date} at {self.booking_time}"
     
